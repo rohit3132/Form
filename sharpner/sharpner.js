@@ -75,6 +75,17 @@ function onSubmit(e){
 
         localStorage.setItem(nameInput.value,JSON.stringify(data));
         
+        //creating delete button
+         let del= document.createElement('button');
+         del.className= 'btn-default btn-sm float- right btn-outline-secondary';
+         del.appendChild(document.createTextNode('Delete'));
+         del.onclick = () => {
+            localStorage.removeItem(myObj.name)
+            userList.removeChild(li);
+         }
+         li.appendChild(del);
+
+ 
 
         // localStorage.setItem('userName',nameInput.value);
         // localStorage.setItem('userEmail',emailInput.value);
