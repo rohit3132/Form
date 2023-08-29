@@ -62,13 +62,26 @@ function onSubmit(e){
     } else {
         const li = document.createElement('li');
         li.appendChild(document.createTextNode(`${nameInput.value} : ${emailInput.value}`));
+        let myObj = {
+            name: nameInput.value,        
+            email: emailInput.value
+        }; 
+
+       
+
+        let existing= localStorage.getItem('userDetail');
+        let data= existing ? JSON.parse(existing) : [];
+        data.push(myObj);
+
+        localStorage.setItem(nameInput.value,JSON.stringify(data));
         
-        localStorage.setItem('userName',nameInput.value);
-        localStorage.setItem('userEmail',emailInput.value);
+
+        // localStorage.setItem('userName',nameInput.value);
+        // localStorage.setItem('userEmail',emailInput.value);
 
 
         userList.appendChild(li);
-
+        userList.appendChild(document.createElement('br'));
         // Clear fields
         nameInput.value = '';
         emailInput.value = '';
